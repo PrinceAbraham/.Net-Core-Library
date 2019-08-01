@@ -4,14 +4,16 @@ using LibraryData;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LibraryData.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    partial class LibraryContextModelSnapshot : ModelSnapshot
+    [Migration("20190801182011_Add Initial Entity models")]
+    partial class AddInitialEntitymodels
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,7 +23,7 @@ namespace LibraryData.Migrations
 
             modelBuilder.Entity("LibraryData.Models.BranchHours", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -33,7 +35,7 @@ namespace LibraryData.Migrations
 
                     b.Property<int>("OpenTime");
 
-                    b.HasKey("Id");
+                    b.HasKey("id");
 
                     b.HasIndex("BranchId");
 
@@ -42,11 +44,11 @@ namespace LibraryData.Migrations
 
             modelBuilder.Entity("LibraryData.Models.Checkout", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("LibraryAssetId");
+                    b.Property<int>("LibraryAssetid");
 
                     b.Property<int?>("LibraryCardId");
 
@@ -54,9 +56,9 @@ namespace LibraryData.Migrations
 
                     b.Property<DateTime>("Until");
 
-                    b.HasKey("Id");
+                    b.HasKey("id");
 
-                    b.HasIndex("LibraryAssetId");
+                    b.HasIndex("LibraryAssetid");
 
                     b.HasIndex("LibraryCardId");
 
@@ -65,7 +67,7 @@ namespace LibraryData.Migrations
 
             modelBuilder.Entity("LibraryData.Models.CheckoutHistory", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -73,13 +75,13 @@ namespace LibraryData.Migrations
 
                     b.Property<DateTime>("CheckedOut");
 
-                    b.Property<int>("LibraryAssetId");
+                    b.Property<int>("LibraryAssetid");
 
                     b.Property<int>("LibraryCardId");
 
-                    b.HasKey("Id");
+                    b.HasKey("id");
 
-                    b.HasIndex("LibraryAssetId");
+                    b.HasIndex("LibraryAssetid");
 
                     b.HasIndex("LibraryCardId");
 
@@ -94,13 +96,13 @@ namespace LibraryData.Migrations
 
                     b.Property<DateTime>("HoldPlaced");
 
-                    b.Property<int?>("LibraryAssetId");
+                    b.Property<int?>("LibraryAssetid");
 
                     b.Property<int?>("LibraryCardId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("LibraryAssetId");
+                    b.HasIndex("LibraryAssetid");
 
                     b.HasIndex("LibraryCardId");
 
@@ -109,7 +111,7 @@ namespace LibraryData.Migrations
 
             modelBuilder.Entity("LibraryData.Models.LibraryAsset", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -131,7 +133,7 @@ namespace LibraryData.Migrations
 
                     b.Property<int>("Year");
 
-                    b.HasKey("Id");
+                    b.HasKey("id");
 
                     b.HasIndex("LocationId");
 
@@ -267,7 +269,7 @@ namespace LibraryData.Migrations
                 {
                     b.HasOne("LibraryData.Models.LibraryAsset", "LibraryAsset")
                         .WithMany()
-                        .HasForeignKey("LibraryAssetId")
+                        .HasForeignKey("LibraryAssetid")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("LibraryData.Models.LibraryCard", "LibraryCard")
@@ -279,7 +281,7 @@ namespace LibraryData.Migrations
                 {
                     b.HasOne("LibraryData.Models.LibraryAsset", "LibraryAsset")
                         .WithMany()
-                        .HasForeignKey("LibraryAssetId")
+                        .HasForeignKey("LibraryAssetid")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("LibraryData.Models.LibraryCard", "LibraryCard")
@@ -292,7 +294,7 @@ namespace LibraryData.Migrations
                 {
                     b.HasOne("LibraryData.Models.LibraryAsset", "LibraryAsset")
                         .WithMany()
-                        .HasForeignKey("LibraryAssetId");
+                        .HasForeignKey("LibraryAssetid");
 
                     b.HasOne("LibraryData.Models.LibraryCard", "LibraryCard")
                         .WithMany()

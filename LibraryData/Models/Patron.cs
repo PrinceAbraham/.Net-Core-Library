@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace LibraryData.Models
 {
@@ -14,6 +12,8 @@ namespace LibraryData.Models
         public string TelephoneNumber { get; set; }
 
         //Virtual lazy loads a collection from db the first time is is accesed
-        //public virual LibraryCard LibraryCard { get; set; }
+        public virtual LibraryCard LibraryCard { get; set; }
+        public virtual LibraryBranch HomeLibraryBranch { get; set; }
+
     }
 }
